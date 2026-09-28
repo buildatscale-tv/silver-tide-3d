@@ -1,0 +1,25 @@
+{
+  "name": "silver-tide-3d",
+  "version": "1.0.0",
+  "description": "Silver Tide 3D: a Darius-style horizontal shooter rebuilt in 3D with Three.js.",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --port 4174",
+    "gen:audio": "node scripts/gen-audio.mjs",
+    "gen:textures": "bash scripts/process-textures.sh"
+  },
+  "dependencies": {
+    "@fontsource/chakra-petch": "^5.3.0",
+    "@fontsource/orbitron": "^5.3.0",
+    "postprocessing": "^6.39.5",
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "@types/three": "^0.186.0",
+    "typescript": "^7.0.2",
+    "vite": "^6.4.3"
+  }
+}
