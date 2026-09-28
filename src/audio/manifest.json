@@ -1,0 +1,56 @@
+{
+  "sampleRate": 44100,
+  "music": {
+    "bgm_title": {
+      "file": "audio/bgm_title.mp3",
+      "loopStart": 0,
+      "loopEnd": 45.714285714285715,
+      "samples": 2016000
+    },
+    "bgm_stage": {
+      "file": "audio/bgm_stage.mp3",
+      "loopStart": 6.956521739130435,
+      "loopEnd": 62.608695652173914,
+      "samples": 2761043
+    },
+    "bgm_boss": {
+      "file": "audio/bgm_boss.mp3",
+      "loopStart": 3.1578947368421053,
+      "loopEnd": 53.68421052631579,
+      "samples": 2367473
+    },
+    "jingle_victory": {
+      "file": "audio/jingle_victory.mp3",
+      "loopStart": 0,
+      "loopEnd": 0,
+      "samples": 330750
+    },
+    "jingle_gameover": {
+      "file": "audio/jingle_gameover.mp3",
+      "loopStart": 0,
+      "loopEnd": 0,
+      "samples": 396900
+    }
+  },
+  "sfx": {
+    "sfx_shoot": "audio/sfx_shoot.mp3",
+    "sfx_shoot_big": "audio/sfx_shoot_big.mp3",
+    "sfx_enemy_shot": "audio/sfx_enemy_shot.mp3",
+    "sfx_hit": "audio/sfx_hit.mp3",
+    "sfx_explode": "audio/sfx_explode.mp3",
+    "sfx_explode_big": "audio/sfx_explode_big.mp3",
+    "sfx_powerup": "audio/sfx_powerup.mp3",
+    "sfx_player_hit": "audio/sfx_player_hit.mp3",
+    "sfx_player_death": "audio/sfx_player_death.mp3",
+    "sfx_boss_hit": "audio/sfx_boss_hit.mp3",
+    "sfx_boss_explode": "audio/sfx_boss_explode.mp3",
+    "sfx_bomb": "audio/sfx_bomb.mp3",
+    "sfx_select": "audio/sfx_select.mp3",
+    "sfx_start": "audio/sfx_start.mp3",
+    "sfx_warning": "audio/sfx_warning.mp3",
+    "sfx_boss_roar": "audio/sfx_boss_roar.mp3",
+    "sfx_laser_charge": "audio/sfx_laser_charge.mp3",
+    "sfx_laser": "audio/sfx_laser.mp3",
+    "sfx_extend": "audio/sfx_extend.mp3"
+  }
+}
