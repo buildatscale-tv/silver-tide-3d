@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#03101a" />
+    <title>Silver Tide 3D</title>
+  </head>
+  <body>
+    <div id="app">
+      <div id="gl"></div>
+
+      <!-- Boot / loading -->
+      <section id="boot" class="screen show">
+        <div class="boot-inner">
+          <div class="logo small"><span class="logo-main">SILVER TIDE</span><span class="logo-sub">ABYSSAL DRIVE</span></div>
+          <div class="loadbar"><div id="loadfill"></div></div>
+          <div id="loadtext" class="hint">LOADING ASSETS…</div>
+          <div id="bootgo" class="blink hidden">PRESS ANY KEY OR CLICK TO DIVE</div>
+        </div>
+      </section>
+
+      <!-- Title -->
+      <section id="title" class="screen">
+        <div class="title-left">
+          <div class="logo"><span class="logo-main">SILVER TIDE</span><span class="logo-sub">ABYSSAL DRIVE</span></div>
+          <nav class="menu" data-menu="title">
+            <button data-act="start">START MISSION</button>
+            <button data-act="settings">SETTINGS</button>
+            <button data-act="controls">CONTROLS</button>
+          </nav>
+          <div class="title-hi">HI-SCORE <b id="title-hi">0</b></div>
+        </div>
+        <div class="title-foot">ARROWS / WASD move &nbsp;·&nbsp; Z / J / SPACE fire &nbsp;·&nbsp; X / SHIFT bomb &nbsp;·&nbsp; P / ESC pause &nbsp;·&nbsp; M mute &nbsp;·&nbsp; gamepad supported</div>
+      </section>
+
+      <!-- Settings -->
+      <section id="settings" class="screen panel-screen">
+        <div class="panel">
+          <h2>SETTINGS</h2>
+          <nav class="menu" data-menu="settings">
+            <button data-set="quality">GRAPHICS <span class="val"></span></button>
+            <button data-set="music">MUSIC <span class="val"></span></button>
+            <button data-set="sfx">SOUND FX <span class="val"></span></button>
+            <button data-set="shake">SCREEN SHAKE <span class="val"></span></button>
+            <button data-set="autoFire">AUTO-FIRE <span class="val"></span></button>
+            <button data-set="showFps">SHOW FPS <span class="val"></span></button>
+            <button data-act="back">BACK</button>
+          </nav>
+          <div class="hint">◀ ▶ change &nbsp; · &nbsp; ENTER select &nbsp; · &nbsp; ESC back</div>
+        </div>
+      </section>
+
+      <!-- Controls -->
+      <section id="controls" class="screen panel-screen">
+        <div class="panel">
+          <h2>CONTROLS</h2>
+          <table class="keys">
+            <tr><td>Move</td><td>Arrows / WASD</td><td>Left stick / D-pad</td></tr>
+            <tr><td>Fire (hold)</td><td>Z / J / Space</td><td>A / RT / RB</td></tr>
+            <tr><td>Bomb</td><td>X / Shift / K</td><td>B / X / LT / LB</td></tr>
+            <tr><td>Pause</td><td>P / Esc</td><td>Start</td></tr>
+            <tr><td>Mute</td><td>M</td><td>—</td></tr>
+          </table>
+          <div class="pickups">
+            <div><i class="orb p">P</i> Weapon level up (5 levels, single shot → five-way spread)</div>
+            <div><i class="orb s">S</i> Shield: absorbs three hits</div>
+            <div><i class="orb b">B</i> Bomb: clears bullets and damages everything</div>
+          </div>
+          <nav class="menu" data-menu="controls"><button data-act="back">BACK</button></nav>
+        </div>
+      </section>
+
+      <!-- HUD -->
+      <section id="hud" class="hidden">
+        <div class="hud-top">
+          <div class="hud-score"><label>SCORE</label><b id="h-score">0</b></div>
+          <div id="h-zone" class="hud-zone"></div>
+          <div class="hud-hi"><label>HI</label><b id="h-hi">0</b></div>
+        </div>
+        <div id="h-boss" class="boss hidden">
+          <div class="boss-name">KING FOSSIL</div>
+          <div class="boss-bar"><div id="h-bossfill"></div><i style="left:33.3%"></i><i style="left:66.6%"></i></div>
+        </div>
+        <div class="hud-bottom">
+          <div class="hud-left">
+            <div id="h-lives" class="lives"></div>
+            <div class="weapon"><label>WEAPON</label><span id="h-weapon" class="pips"></span></div>
+          </div>
+          <div class="hud-right">
+            <div class="shield"><label>SHIELD</label><span id="h-shield" class="cells"></span></div>
+            <div class="bombs"><label>BOMB</label><b id="h-bombs">0</b><kbd>X</kbd></div>
+          </div>
+        </div>
+      </section>
+
+      <div id="popups"></div>
+      <div id="msg"></div>
+
+      <!-- Darius-style WARNING -->
+      <section id="warning" class="hidden">
+        <div class="stripe top"></div>
+        <div class="warn-body">
+          <div class="warn-title">WARNING!!</div>
+          <div class="warn-text">A HUGE BATTLESHIP<br /><b>KING FOSSIL</b><br />IS APPROACHING FAST</div>
+        </div>
+        <div class="stripe bottom"></div>
+      </section>
+
+      <!-- Pause -->
+      <section id="pause" class="screen panel-screen">
+        <div class="panel">
+          <h2>PAUSED</h2>
+          <nav class="menu" data-menu="pause">
+            <button data-act="resume">RESUME</button>
+            <button data-act="restart">RESTART STAGE</button>
+            <button data-act="settings">SETTINGS</button>
+            <button data-act="quit">QUIT TO TITLE</button>
+          </nav>
+        </div>
+      </section>
+
+      <!-- Game over -->
+      <section id="gameover" class="screen panel-screen">
+        <div class="panel wide">
+          <h1 class="big danger">GAME OVER</h1>
+          <div class="result"><label>SCORE</label><b id="go-score">0</b></div>
+          <div class="result small"><label>HI-SCORE</label><b id="go-hi">0</b></div>
+          <nav class="menu" data-menu="gameover">
+            <button data-act="restart">TRY AGAIN</button>
+            <button data-act="quit">TITLE</button>
+          </nav>
+        </div>
+      </section>
+
+      <!-- Stage clear -->
+      <section id="clear" class="screen panel-screen">
+        <div class="panel wide">
+          <h1 class="big">STAGE 1 CLEAR</h1>
+          <p class="flavor">The abyss leviathan falls. The tide turns silver.</p>
+          <div class="tally">
+            <div><label>SCORE</label><b id="cl-score">0</b></div>
+            <div><label>LIVES BONUS</label><b id="cl-lives">0</b></div>
+            <div><label>BOMB BONUS</label><b id="cl-bombs">0</b></div>
+            <div class="total"><label>TOTAL</label><b id="cl-total">0</b></div>
+            <div class="hi"><label>HI-SCORE</label><b id="cl-hi">0</b></div>
+          </div>
+          <nav class="menu" data-menu="clear">
+            <button data-act="next">NEXT LOOP (HARDER)</button>
+            <button data-act="quit">TITLE</button>
+          </nav>
+        </div>
+      </section>
+
+      <div id="fps" class="hidden"></div>
+      <div id="mute" class="hidden">MUTED</div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
